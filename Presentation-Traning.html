@@ -7,14 +7,20 @@
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
-    <script src="components/set-image.js"></script>
+    <!--script src="components/set-image.js"></script-->
+    <script>
+    	var count=0;
+    	var countup=function(){
+    		console.log(count++);
+    	}
+    	setInterval(countup,1000);
+    </script>
 </head>
 
 <body>
     <a-scene>
     	<!---->
     	<a-assets>
-    		<img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
     		<img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
     		<audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
     		<script id="link" type="text/html">
@@ -60,7 +66,7 @@
         
 
 	    <!-- Image links. -->
-	    <a-entity id="links" layout="type: line; margin: 0.5" position="0 3 -4" >
+	    <a-entity id="links" layout="type: line; margin: 1.5" position="0 3 -4" >
 	    	<a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
 	    </a-entity>
 
