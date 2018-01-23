@@ -30,14 +30,15 @@ AFRAME.registerComponent('set-image', {
   startShowing: function () {
     var data = this.data;
     var targetEl = this.data.target;
+    PassSec = 0;
 
     // Only set up once.
-    if (targetEl.dataset.setImageFadeSetup) { return; }
+    if (targetEl.dataset.setImageFadeSetup) { 
+      PassageID = setInterval('showPassage()',1000);
+      return; }
     targetEl.dataset.setImageFadeSetup = true;
 
-    PassSec = 0;   // カウンタのリセット
-    PassageID = setInterval('showPassage()',1000);   // タイマーをセット(1000ms間隔)
-    document.getElementById("startcount").disabled = true;   // 開始ボタンの無効化
+    PassageID = setInterval('showPassage()',1000);
     
     // Create animation.
     targetEl.setAttribute('animation__fade', {
