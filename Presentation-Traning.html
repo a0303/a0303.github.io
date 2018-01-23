@@ -8,7 +8,7 @@
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <!--script src="components/set-image.js"></script-->
-    <script src="timer.js"></script>
+    <script src="timer2.js"></script>
 </head>
 <body>
 	<p>
@@ -30,7 +30,7 @@
     			event-set__2="_event: mouseup; scale: 1.2 1.2 1"
     			event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
     			event-set__4="_event: mouseleave; scale: 1 1 1"
-    			timer="on: click; src: ${src}"
+    			timer="on: click; src: startcount"
     			sound="on: click; src: #click-sound">
     			<script type="text/javascript">
     				startShowing();
@@ -90,6 +90,24 @@
 	    	raycaster="objects: .link"></a-cursor>
       </a-entity>
 
-	</a-scene>
+      <a-box position="0 5 -5" rotation="0 45 45" scale="2 2 2" color="#EF2D5E">
+      	<a-animation attribute="position" to="0 -4 -5" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
+      </a-box>
+  </a-scene>
+ <script>
+  var boxEl = document.querySelector('a-box');
+
+  // カーソルがぶつかったら拡大
+  boxEl.addEventListener('mouseenter', function () {
+    boxEl.setAttribute('scale', {x: 5, y: 5, z: 5});
+    console.log("mouseenter");
+  });
+
+  // カーソルが離れたら元にもどす
+  boxEl.addEventListener('mouseleave', function () {
+    boxEl.setAttribute('scale', {x: 2, y: 2, z: 2});
+    console.log("mouseleave");
+  });
+</script>
 </body>
 </html>
