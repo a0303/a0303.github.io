@@ -1,32 +1,35 @@
 <html>
   <head>
-     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-	 <script src="../../../dist/aframe-master.js"></script>
+  	<meta charset="utf-8">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+	<script src="../../../dist/aframe-master.js"></script>
+	<script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
   </head>
+
   <body>
-  <p>
-   <input type="button" value="カウント開始" id="startcount" onclick="startShowing();">
-   <input type="button" value="カウント停止" id="endcount" onclick="stopShowing();">
-</p>
-<p id="PassageArea"></p>
+  
     <a-scene>
+    	<img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+    	
+
+
+
+
 	  <!--choushu-->
       <a-cylinder position="0 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
 	  <a-cylinder position="-2 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
 	  <a-cylinder position="-4 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
 	  <a-cylinder position="-6 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
       <!--a-cylinder position="-8 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder-->
-	  <a-assets>
+	  <!--a-assets>
         <a-asset-item id="why-male-models" src="man.dae"></a-asset-item>
       </a-assets>
 	  <a-entity id="model" position="0 0 -3">
         <a-collada-model position="-8 0.75 -5" rotation="0 -20 0" scale="1.5 1.5 1.5"
                          src="#why-male-models"></a-collada-model>
-      </a-entity>
-	  <!--a-assets>
-        <a-asset-item id="luka" src="luka1_0_1.dae"></a-asset-item>
-      </a-assets>
-        <a-collada-model position="-8 0.75 -5" src="#luka"></a-collada-model>
       </a-entity-->
 	  <!--choushu-->
 	  <!--room+slide-->
