@@ -12,7 +12,7 @@
 </head>
 <body>
 	<p>
-		<input type="button" value="カウント開始" id="startcount" onclick="startShowing();">
+		
 		<input type="button" value="カウント停止" id="endcount" onclick="stopShowing();">
 	</p>
 	<p id="PassageArea">ここにカウントが表示されます</p>
@@ -90,24 +90,6 @@
 	    	raycaster="objects: .link"></a-cursor>
       </a-entity>
 
-      <a-box position="0 5 -5" rotation="0 45 45" scale="2 2 2" color="#EF2D5E">
-      	<a-animation attribute="position" to="0 -4 -5" direction="alternate" dur="3000" repeat="indefinite"></a-animation>
-      </a-box>
   </a-scene>
- <script>
-  var boxEl = document.querySelector('a-box');
-
-  // カーソルがぶつかったら拡大
-  boxEl.addEventListener('mouseenter', function () {
-    boxEl.setAttribute('scale', {x: 5, y: 5, z: 5});
-    console.log("mouseenter");
-  });
-
-  // カーソルが離れたら元にもどす
-  boxEl.addEventListener('mouseleave', function () {
-    boxEl.setAttribute('scale', {x: 2, y: 2, z: 2});
-    console.log("mouseleave");
-  });
-</script>
 </body>
 </html>
