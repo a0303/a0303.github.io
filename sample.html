@@ -8,10 +8,14 @@
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <!--script src="components/set-image.js"></script-->
-    <script src="timer3.js"></script>
+    <script src="timer.js"></script>
 </head>
 <body>
-	
+	<p>
+		
+		<input type="button" value="カウント停止" id="endcount" onclick="stopShowing();">
+	</p>
+	<p id="PassageArea">ここにカウントが表示されます。</p>
     <a-scene>
     	<!---->
 
@@ -36,7 +40,33 @@
     	</a-assets>
         <!---->
 
+        <!--choushu-->
+        <a-cylinder position="0 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+        <a-cylinder position="-2 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+        <a-cylinder position="-4 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+        <a-cylinder position="-6 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+        
+	    <!--yuka-->
+		<a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#DF7401"></a-plane>
+		<!--yuka-->
+	    <!--shoumen-->
+	    <a-plane position="0 10 -10" rotation="0 0 0" width="20" height="20" color="#81F"></a-plane>
+	    <!--shoumen-->
+	    <!--tenjo-->
+	    <a-plane position="0 5 0" rotation="90 0 0" width="20" height="20" color="#DF7401"></a-plane>
+   	    <!--tenjo-->
+	    <!--haimen-->
+	    <a-plane position="0 10 2" rotation="180 0 0" width="20" height="20" color="#81F"></a-plane>
+	    <a-plane position="-3 2.5 1.9" rotation="180 0 0" width="4" height="3" color="#00FF40"></a-plane>
+	    <!--haimen-->
+	    <!--sokumen-->
+	    <a-plane position="2 10 0" rotation="0 -90 0" width="20" height="20" color="#81F"></a-plane>
+	    <a-plane position="-10 10 0" rotation="0 90 0" width="20" height="20" color="#81F"></a-plane>
+	    <!--sokumen-->
+
         <a-sky color="#ECECEC"></a-sky>
+
+        
 
 	    <!-- Image links. -->
 	    <a-entity id="links" layout="type: line; margin: 1.5" position="0 3 -4" >
