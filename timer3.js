@@ -67,7 +67,7 @@ function startShowing() {
    document.getElementById("startcount").disabled = true;   // 開始ボタンの無効化
 }
  */
-
+/*
  // 繰り返し処理の中身
 function showPassage() {
    PassSec++;   // カウントアップ
@@ -79,3 +79,4 @@ function stopShowing() {
    clearInterval( PassageID );   // タイマーのクリア
    document.getElementById("startcount").disabled = false;   // 開始ボタンの有効化
 }
+*/
