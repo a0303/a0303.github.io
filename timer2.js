@@ -15,7 +15,7 @@ AFRAME.registerComponent('set-image', {
 
   startShowing: function () {
     PassSec = 0;   // カウンタのリセット
-    PassageID = setInterval('showPassage()',1000);   // タイマーをセット(1000ms間隔)
+    //PassageID = setInterval('showPassage()',1000);   // タイマーをセット(1000ms間隔)
   }
 
   /**
