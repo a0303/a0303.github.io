@@ -10,18 +10,45 @@ AFRAME.registerComponent('set-image', {
   init: function () {
     var data = this.data;
     var el = this.el;
-    //this.startShowing();
-  },
 
-  startShowing: function () {
-    PassSec = 0;   // カウンタのリセット
-    //PassageID = setInterval('showPassage()',1000);   // タイマーをセット(1000ms間隔)
-  }
+    this.startShowing();
+
+    el.addEventListener(data.on, function () {
+      // Fade out image.
+      data.target.emit('set-image-fade');
+      // Wait for fade to complete.
+      setTimeout(function () {
+        // Set image.
+        data.target.setAttribute('material', 'src', data.src);
+      }, data.dur);
+    });
+  },
 
   /**
    * Setup fade-in + fade-out.
    */
-   
+  startShowing: function () {
+    var data = this.data;
+    var targetEl = this.data.target;
+
+    // Only set up once.
+    if (targetEl.dataset.setImageFadeSetup) { return; }
+    targetEl.dataset.setImageFadeSetup = true;
+
+    PassSec = 0;   // カウンタのリセット
+    PassageID = setInterval('showPassage()',1000);   // タイマーをセット(1000ms間隔)
+    document.getElementById("startcount").disabled = true;   // 開始ボタンの無効化
+    
+    // Create animation.
+    targetEl.setAttribute('animation__fade', {
+      property: 'material.color',
+      startEvents: 'set-image-fade',
+      dir: 'alternate',
+      dur: data.dur,
+      from: '#FFF',
+      to: '#000'
+    });
+  }
 });
 function showPassage() {
    PassSec++;   // カウントアップ
