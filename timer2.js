@@ -8,10 +8,9 @@ AFRAME.registerComponent('set-image', {
   },
 
   init: function () {
-        var data = this.data;
+    var data = this.data;
     var el = this.el;
-
-    this.setupFadeAnimation();
+    this.startShowing();
 
     el.addEventListener(data.on, function () {
 
