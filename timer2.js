@@ -34,7 +34,7 @@ AFRAME.registerComponent('set-image', {
 
     // Only set up once.
     if (targetEl.dataset.setImageFadeSetup) { 
-      PassageID = setInterval('showPassage()',1000);
+      //PassageID = setInterval('showPassage()',1000);
       return; }
     targetEl.dataset.setImageFadeSetup = true;
 
