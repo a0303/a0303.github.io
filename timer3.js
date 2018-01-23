@@ -11,7 +11,7 @@ AFRAME.registerComponent('set-image', {
     var data = this.data;
     var el = this.el;
 
-    /*this.startShowing();
+    this.startShowing();
 
     el.addEventListener(data.on, function () {
       // Fade out image.
@@ -21,9 +21,9 @@ AFRAME.registerComponent('set-image', {
         // Set image.
         data.target.setAttribute('material', 'src', data.src);
       }, data.dur);
-    });*/
+    });
   },
-  /*
+  
   startShowing: function () {
     var data = this.data;
     var targetEl = this.data.target;
@@ -35,7 +35,7 @@ AFRAME.registerComponent('set-image', {
     }
     targetEl.dataset.setImageFadeSetup = true;
 
-    PassageID = setInterval('showPassage()',1000);
+    PassageID = setInterval(this.showPassage(),1000);
     
     // Create animation.
     targetEl.setAttribute('animation__fade', {
@@ -46,23 +46,13 @@ AFRAME.registerComponent('set-image', {
       from: '#FFF',
       to: '#000'
     });
-  }*/
-  
-  function startShowing(){
-    PassSec=0;
-    PassageID=setInterval('showPassage()',1000);
   }
 
-  function showPassage(){
-    PassSec++;
-    var msg = "ボタンを押してから " + PassSec + "秒が経過しました。";
-  }
-
-  /*showPassage: function() {
+  showPassage: function() {
    PassSec++;   // カウントアップ
    var msg = "ボタンを押してから " + PassSec + "秒が経過しました。";   // 表示文作成
    document.getElementById("PassageArea").innerHTML = msg;   // 表示更新
-}*/
+}
 stopShowing: function() {
    clearInterval( PassageID );   // タイマーのクリア
    document.getElementById("startcount").disabled = false;   // 開始ボタンの有効化
