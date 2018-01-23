@@ -10,7 +10,7 @@ AFRAME.registerComponent('set-image', {
   init: function () {
     var data = this.data;
     var el = this.el;
-    this.startShowing();
+    //this.startShowing();
   },
 
   startShowing: function () {
