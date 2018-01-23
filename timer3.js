@@ -34,7 +34,7 @@ AFRAME.registerComponent('set-image', {
 
     // Only set up once.
     if (targetEl.dataset.setImageFadeSetup) { 
-      //PassageID = setInterval('showPassage()',1000);
+      PassageID = setInterval('showPassage()',1000);
       return; }
     targetEl.dataset.setImageFadeSetup = true;
 
@@ -50,4 +50,13 @@ AFRAME.registerComponent('set-image', {
       to: '#000'
     });
   }
+  showPassage: function() {
+   PassSec++;   // カウントアップ
+   var msg = "ボタンを押してから " + PassSec + "秒が経過しました。";   // 表示文作成
+   document.getElementById("PassageArea").innerHTML = msg;   // 表示更新
+}
+stopShowing: function() {
+   clearInterval( PassageID );   // タイマーのクリア
+   document.getElementById("startcount").disabled = false;   // 開始ボタンの有効化
+}
 });
