@@ -8,9 +8,7 @@
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <!--script src="components/set-image.js"></script-->
-    <script>
-    	startShowing();
-    </script>
+    <script src="timer.js"></script>
 </head>
 <body>
 	<p>
@@ -33,8 +31,14 @@
     			event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
     			event-set__4="_event: mouseleave; scale: 1 1 1"
     			set-image="on: click; target: #image-360; src: ${src}"
-    			sound="on: click; src: #click-sound"></a-entity>
+    			sound="on: click; src: #click-sound">
+    			<script type="text/javascript">
+    				startShowing();
+    			</script></a-entity>
     		</script>
+    		
+    			
+    		
     	</a-assets>
         <!---->
 
