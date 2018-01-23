@@ -30,10 +30,9 @@
     			event-set__2="_event: mouseup; scale: 1.2 1.2 1"
     			event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
     			event-set__4="_event: mouseleave; scale: 1 1 1"
-    			>
-    			<script type="text/javascript">
-    				startShowing();
-    			</script></a-entity>
+    			set-image="on: click; target: #image-360; src: ${src}"
+    			sound="on: click; src: #click-sound"
+    			></a-entity>
     		</script>
     		
     			
@@ -82,7 +81,7 @@
 	    <a-entity camera look-controls>
 	    	<a-cursor id="cursor"
 	    	animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-	    	
+	    	animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
 	    	event-set__1="_event: mouseenter; color: springgreen"
 	    	event-set__2="_event: mouseleave; color: black"
 
