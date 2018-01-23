@@ -8,18 +8,17 @@
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <!--script src="components/set-image.js"></script-->
-    <script>
-    	var count=0;
-    	var countup=function(){
-    		console.log(count++);
-    	}
-    	setInterval(countup,1000);
-    </script>
+    <script src="timer.js"></script>
 </head>
-
 <body>
+	<p>
+		<input type="button" value="カウント開始" id="startcount" onclick="startShowing();">
+		<input type="button" name="カウント停止" id="endcount" onclick="stopShowing();">
+	</p>
+	<p id="PassageArea">ここにカウントが表示されます</p>
     <a-scene>
     	<!---->
+
     	<a-assets>
     		<img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
     		<audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
