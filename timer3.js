@@ -19,7 +19,12 @@ AFRAME.registerComponent('set-image', {
       // Wait for fade to complete.
       setTimeout(function () {
         // Set image.
-        data.target.setAttribute('material', 'src', data.src);
+        //data.target.setAttribute('material', 'src', data.src);
+        var count=0;
+        var countup=function(){
+          console.log(count++);
+        }
+      setTimeout(countup,1000);
       }, data.dur);
     });
   },
