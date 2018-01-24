@@ -22,7 +22,7 @@ AFRAME.registerComponent('set-image', {
         //data.target.setAttribute('material', 'src', data.src);
         var count=0;
         var countup=function(){
-          console.log(count++);
+          //console.log(count++);
         }
       setTimeout(countup,1000);
       }, data.dur);
