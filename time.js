@@ -1,4 +1,4 @@
-AFRAME.registerComponent('brother3', {
+AFRAME.registerComponent('set-image1', {
   schema: {
     on: {type: 'string'},
     target: {type: 'selector'},
@@ -9,7 +9,9 @@ AFRAME.registerComponent('brother3', {
   init: function () {
     var data = this.data;
     var el = this.el;
-    //document.getElementById("n").innerHTML=m;
+
+    var m="うんこ";
+    document.getElementById("unko").innerHTML=m;
 
     this.setupFadeAnimation();  //
 
@@ -54,7 +56,7 @@ function time(){
     //PassSec=count;
     //showPassage();
     var msg = "ボタンを押してから " + count + "秒が経過しました。";   // 表示文作成
-    document.getElementById("bro3").innerHTML = msg;   // 表示更新
+    document.getElementById("unko").innerHTML = msg;   // 表示更新
     var id=setTimeout(countup,1000);
     /*if (count>=5) {
       clearTimeout(id);

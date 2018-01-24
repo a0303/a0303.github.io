@@ -1,4 +1,4 @@
-AFRAME.registerComponent('brother3', {
+AFRAME.registerComponent('brother4', {
   schema: {
     on: {type: 'string'},
     target: {type: 'selector'},
@@ -54,7 +54,7 @@ function time(){
     //PassSec=count;
     //showPassage();
     var msg = "ボタンを押してから " + count + "秒が経過しました。";   // 表示文作成
-    document.getElementById("bro3").innerHTML = msg;   // 表示更新
+    document.getElementById("bro4").innerHTML = msg;   // 表示更新
     var id=setTimeout(countup,1000);
     /*if (count>=5) {
       clearTimeout(id);
