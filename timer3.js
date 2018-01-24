@@ -23,8 +23,13 @@ AFRAME.registerComponent('set-image', {
         var count=0;
         var countup=function(){
           //console.log(count++);
+          count++;
         }
-      setTimeout(countup,1000);
+        var id=setTimeout(countup,1000);
+        if (count>=5) {
+          clearTimeout(id);
+        }
+        countup();
       }, data.dur);
     });
   },
