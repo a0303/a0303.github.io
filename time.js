@@ -10,8 +10,8 @@ AFRAME.registerComponent('set-image1', {
     var data = this.data;
     var el = this.el;
 
-    var m="うんこ";
-    document.getElementById("unko").innerHTML=m;
+    var m="こ";
+    document.getElementById("ko").innerHTML=m;
 
     this.setupFadeAnimation();  //
 
@@ -56,7 +56,7 @@ function time(){
     //PassSec=count;
     //showPassage();
     var msg = "ボタンを押してから " + count + "秒が経過しました。";   // 表示文作成
-    document.getElementById("unko").innerHTML = msg;   // 表示更新
+    document.getElementById("ko").innerHTML = msg;   // 表示更新
     var id=setTimeout(countup,1000);
     /*if (count>=5) {
       clearTimeout(id);
