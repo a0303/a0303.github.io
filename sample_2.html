@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--file:///D:/sample_2.html-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Presentation training system ver1</title>
+  <meta name="description" content="Presentation training system">
+  <meta property="og:title" content="Presentation-Training"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://a0303.github.io/sample_2.html/" />
+  <!--meta property="og:image" content="https://a0303.github.io/" /-->
+  <!--meta property="og:description" content="WebVR demo that displays art " /-->
+  
+  <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+  <script type="text/javascript">
+    var totalTickCount = 0; //プレゼンテーション全体の時間を格納する変数
+    var objectGazeTickCount = {}; //各聴衆を見ている時間を格納する配列
+    var gazedObjectID; //見ている聴講者のIDを格納する変数
+    AFRAME.registerComponent('cursor-listener', { 
+      init: function() {
+        this.el.addEventListener("mouseenter", function(evt) {
+          gazedObjectID = this.getAttribute("id");
+        });
+        this.el.addEventListener("mouseleave", function(evt) {
+          gazedObjectID = null;
+        });
+      }
+    });
+    var updateText = function() {
+      ++totalTickCount;
+      if (gazedObjectID != null) {
+        if (! (gazedObjectID in objectGazeTickCount))
+          objectGazeTickCount[gazedObjectID] = 0;
+        objectGazeTickCount[gazedObjectID]++;
+      }
+
+      var text = "";
+      for (var i in objectGazeTickCount) {
+        text += i + " " + (objectGazeTickCount[i] / totalTickCount) + "\n";
+      }
+      document.getElementById("text").setAttribute("bmfont-text", "text", text);
+    };
+    setInterval(updateText, 500);
+    
+  </script>
+</head>
+
+<body>
+  <div id="container" class="container">
+    <div class="info">
+      <div class="title">Presentation-Training</div>
+      <a class="button" id="start_experience" href="#">start experience</a>
+      <div class="instructions">
+        <div><strong>VR</strong>: Hand controllers and teleport with trigger.</div>
+        <div><strong>Desktop</strong>: Keyboard (WASD/arrows) and mouse.</div>
+        <div><strong>Mobile</strong>: Gaze cursor and teleportation.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <a-scene>
+    <a-camera>
+      <a-cursor fuse="true" fuse-timeout="500" position="0 0 -1" material="color: blue; shader: flat">
+      </a-cursor>
+      <a-entity id="text" position="-0.6 0.1 -1" bmfont-text="color: black;">
+      </a-entity>
+    </a-camera>
+
+
+
+    <!--front wall-->
+    <a-plane position="-4 2.5 -10" rotation="0 0 0" width="12" height="5" color="#81F"></a-plane>
+    <!--behind wall-->
+    <a-plane position="-4 2.5 2" rotation="180 0 0" width="12" height="5" color="#81F"></a-plane>
+    <!--right wall-->
+    <a-plane position="2 2.5 -4" rotation="0 -90 0" width="12" height="5" color="#81F"></a-plane>
+    <!--left wall-->
+    <a-plane position="-10 2.5 -4" rotation="0 90 0" width="12" height="5" color="#81F"></a-plane>
+    <!--ceiling-->
+    <a-plane position="-4 5 -4" rotation="90 0 0" width="12" height="12" color="#DF7401"></a-plane>
+    <!--floor-->
+    <a-plane src="https://a0303.github.io/yuka.jpg" position="-4 0 -4" rotation="-90 0 0" width="12" height="12" color="#DF7401"></a-plane>
+    <!--screen-->
+    <a-plane position="-3 2.5 1.9" rotation="180 0 0" width="4" height="3" color="#00FF40"></a-plane>
+    <!--listener-->
+    <a-cylinder id="listener_1" cursor-listener position="0 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+    <a-cylinder id="listener_2" cursor-listener position="-2 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+    <a-cylinder id="listener_3" cursor-listener position="-4 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+    <a-cylinder id="listener_4" cursor-listener position="-6 0.75 -5" radius="0.5" height="1.5" color="#4CC3D9"></a-cylinder>
+
+
+
+    <a-sky id="sky" color="#ECECEC"></a-sky>
+  </a-scene>
+</body>
+
+</html>
