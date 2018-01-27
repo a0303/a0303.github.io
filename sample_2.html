@@ -5,24 +5,14 @@
 <head>
   <meta charset="utf-8">
   <title>Presentation training system ver1</title>
-  <!--meta name="description" content="Presentation training system"-->
-  <meta property="og:title" content="Presentation-Training"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://a0303.github.io/sample_2.html/" />
-  <!--meta property="og:image" content="https://a0303.github.io/" /-->
-  <!--meta property="og:description" content="WebVR demo that displays art " /-->
-  
- <link rel="icon" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-    <meta name="description" content="Cecropia's The Hall VR in A-Frame">
-  
+  <meta name="description" content="Presentation training system">
   <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
   <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
   <script type="text/javascript">
     var totalTickCount = 0; //プレゼンテーション全体の時間を格納する変数
     var objectGazeTickCount = {}; //各聴衆を見ている時間を格納する配列
     var gazedObjectID; //見ている聴講者のIDを格納する変数
-    AFRAME.registerComponent('cursor-listener', { 
+    AFRAME.registerComponent('cursor-listener', { //
       init: function() {
         this.el.addEventListener("mouseenter", function(evt) {
           gazedObjectID = this.getAttribute("id");
@@ -52,19 +42,6 @@
 </head>
 
 <body>
-  <div id="container" class="container">
-    <div class="info">
-      <div class="title">Presentation-Training</div>
-      <a class="button" id="start_experience" href="#">start experience</a>
-      <div class="instructions">
-        <div><strong>VR</strong>: Hand controllers and teleport with trigger.</div>
-        <div><strong>Desktop</strong>: Keyboard (WASD/arrows) and mouse.</div>
-        <div><strong>Mobile</strong>: Gaze cursor and teleportation.</div>
-      </div>
-    </div>
-  </div>
-
-
   <a-scene>
     <a-camera>
       <a-cursor fuse="true" fuse-timeout="500" position="0 0 -1" material="color: blue; shader: flat">
