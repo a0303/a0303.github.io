@@ -19,12 +19,12 @@
     -----------------------------------------------------*/
     AFRAME.registerComponent('start-stop', {
       init: function() {
-        this.el.addEventListener("click", function (evt) {
-          StartStop++;
-          if (StartStop==1){
-            document.getElementById("text2").setAttribute("bmfont-text", "text", "start"+"\n");
-          }else if(StartStop>1){
-            document.getElementById("text2").setAttribute("bmfont-text", "text", "stop"+"\n");
+        this.el.addEventListener("click", function(evt) {
+          ++StartStop;
+          if (StartStop == 1){
+            document.getElementById("text2").setAttribute("bmfont-text", "text", "start");
+          }else if(StartStop > 1){
+            document.getElementById("text2").setAttribute("bmfont-text", "text", "stop");
           }
         });
       }
@@ -48,7 +48,7 @@
     時間計測,アイコンタクト率計測,テキスト更新
     ---------------------------------*/
     var updateText = function() {
-      if (StartStop==1) {
+      if (StartStop == 1) {
         ++totalTickCount;
         if (gazedObjectID != null) {
           if (! (gazedObjectID in objectGazeTickCount))
@@ -60,7 +60,7 @@
         for (var i in objectGazeTickCount) {
           text += i + " " + 100*(objectGazeTickCount[i] / totalTickCount) + "\n";
         }
-        document.getElementById("text").setAttribute("bmfont-text", "text", text);
+        document.getElementById("text1").setAttribute("bmfont-text", "text", text);
       }
     };
     setInterval(updateText, 500);
@@ -68,19 +68,64 @@
     /*--------------------------
     スライドの切り替え
     ---------------------------*/
+    var x = 1;
+    var screenEl = document.querySelector('#screen');
+    var ComputerScreenEl = document.querySelector('#ComputerScreen');
+    var NextPreviousEl
+    
+    var changeBG = function(id) {
+      screenEl.setAttribute('src', id);
+      ComputerScreenEl.setAttribute('src', id);
 
-
+    };
+    
+    AFRAME.registerComponent('btn-selector', {
+      init: function() {
+        this.el.addEventListener("click", function(evt) {
+          NextPreviousEl = this.getAttribute("id");
+          
+          if(NextPreviousEl === "NextButton") {
+            if (x < 13) ++x;
+          } 
+          else if(NextPreviousEl === "PreviousButton") {
+            if (1 < x) --x;
+          }
+          //screenEl.setAttribute('src', id);
+          //ComputerScreenEl.setAttribute('src', "#page2");
+      
+          //changeBG("#page2");
+          document.getElementById("text3").setAttribute("bmfont-text", "text", x + "\n");
+          /*切り替え
+          if (x == 1) changeBG("#page1");
+          else if (x == 2) changeBG("#page2");
+          else if (x == 3) changeBG("#page3");
+          else if (x == 4) changeBG("#page4");
+          else if (x == 5) changeBG("#page5");
+          else if (x == 6) changeBG("#page6");
+          else if (x == 7) changeBG("#page7");
+          else if (x == 8) changeBG("#page8");
+          else if (x == 9) changeBG("#page9");
+          else if (x == 10) changeBG("#page10");
+          else if (x == 11) changeBG("#page11");
+          else if (x == 12) changeBG("#page12");
+          else if (x == 13) changeBG("#page13");
+          */
+        });
+      }
+    });
   </script>
 </head>
 
 <body>
   <a-scene>
-    <a-camera>
+    <a-camera position="-1 0 0.5">
       <a-cursor fuse="true" fuse-timeout="500" position="0 0 -1" material="color: blue; shader: flat">
       </a-cursor>
-      <a-entity id="text" position="-0.6 0.4 -1" bmfont-text="color: black;" scale="0.4 0.4 0.4">
+      <a-entity id="text1" position="-0.6 0.4 -1" bmfont-text="color: black;" scale="0.4 0.4 0.4">
       </a-entity>
-      <a-entity id="text2" position="-0.6 -0.4 -1" bmfont-text="color: blue;" scale="0.4 0.4 0.4">
+      <a-entity id="text2" position="-0.6 -0.4 -1" bmfont-text="color: blue;" scale="0.4 0.4 0.4">  
+      </a-entity>
+      <a-entity id="text3" position="-0.6 -0.2 -1" bmfont-text="color: blue;" scale="0.4 0.4 0.4">
       </a-entity>
     </a-camera>
 
@@ -88,6 +133,21 @@
       <img id="floor" src="https://a0303.github.io/floor.jpg" >
       <img id="ceiling" src="https://a0303.github.io/ceiling.jpg">
       <img id="wall" src="https://a0303.github.io/wall.jpg">
+      <img id="next" src="https://a0303.github.io/Next.png">
+      <img id="previous" src="https://a0303.github.io/Previous.png">
+      <img id="page1" src="https://a0303.github.io/page1.png">
+      <img id="page2" src="https://a0303.github.io/page2.png">
+      <img id="page3" src="https://a0303.github.io/page3.png">
+      <img id="page4" src="https://a0303.github.io/page4.png">
+      <img id="page5" src="https://a0303.github.io/page5.png">
+      <img id="page6" src="https://a0303.github.io/page6.png">
+      <img id="page7" src="https://a0303.github.io/page7.png">
+      <img id="page8" src="https://a0303.github.io/page8.png">
+      <img id="page9" src="https://a0303.github.io/page9.png">
+      <img id="page10" src="https://a0303.github.io/page10.png">
+      <img id="page11" src="https://a0303.github.io/page11.png">
+      <img id="page12" src="https://a0303.github.io/page12.png">
+      <img id="page13" src="https://a0303.github.io/page13.png">
     </assets>
 
     <!--front wall-->
@@ -107,8 +167,9 @@
     <a-plane src="#floor" position="-7 0 -1" rotation="-90 0 0" width="6" height="6"></a-plane>
     <a-plane src="#floor" position="-7 0 -7" rotation="-90 0 0" width="6" height="6"></a-plane>
     <!--screen-->
-    <a-plane position="-3 2.5 1.9" rotation="180 0 0" width="4" height="3" color="#00FF40"></a-plane>
+    <a-plane id="screen" src="#page1" position="-3 2.5 1.9" rotation="180 0 180" width="3" height="2"></a-plane>
     <!--listener-->
+
     <a-cylinder id="listener_1" cursor-listener position="0 0.75 -5" radius="0.2" height="1.4" color="#4CC3D9"></a-cylinder>
     <a-cylinder id="listener_2" cursor-listener position="-2 0.75 -5" radius="0.2" height="1.4" color="#4CC3D9"></a-cylinder>
     <a-cylinder id="listener_3" cursor-listener position="-4 0.75 -5" radius="0.2" height="1.4" color="#4CC3D9"></a-cylinder>
@@ -116,8 +177,15 @@
 
     <a-sky id="sky" color="#ECECEC"></a-sky>
 
-    <a-plane id=StartStopButton start-stop position="0 0.1 -1" rotation="-90 0 0" width="0.5" height="0.5" color="#FF0000">
-    </a-plane>
+    <!--start/stop button-->
+    <a-circle id="StartStopButton" start-stop position="-1 0.1 -0.2" rotation="-90 0 0" radius="0.1" color="#FF0000"></a-circle>
+
+    <!--next button-->
+    <a-circle id="NextButton" btn-selector src="#next" position="-0.7 0.6 -0.2" rotation="-35 -15 0" radius="0.1"></a-circle>
+    <!--previous button-->
+    <a-circle id="PreviousButton" btn-selector src="#previous" position="-1.3 0.6 -0.2" rotation="-35 15 0" radius="0.1"></a-circle>
+    <!--computer screen-->
+    <a-plane id="ComputerScreen" src="#page1" position="-1 1.2 0" rotation="-30 0 0" width="0.4" height="0.26"></a-plane>
 
   </a-scene>
 </body>
