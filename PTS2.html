@@ -118,14 +118,11 @@
     アイコンタクト率に応じて色変換
     --------------------*/
     var changeColor = function(id) {
-      if (7.5 < eyeContactRate) {
+      if (6 < eyeContactRate) {
         id.setAttribute('color', '#4CC3D9');
       }
-      else if ((6 < eyeContactRate) && (eyeContactRate < 7.5)){
-        id.setAttribute('color', '#01DF01');
-      }
-      else if ((5 < eyeContactRate) && (eyeContactRate < 6)){
-        id.setAttribute('color', '#8A0808');
+      else if ((3 < eyeContactRate) && (eyeContactRate < 6)){
+        id.setAttribute('color', '#FF0000');
       }
       else if (eyeContactRate < 5){
         id.setAttribute('color', '#000000');
