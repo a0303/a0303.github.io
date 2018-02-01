@@ -10,7 +10,7 @@
   <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
   <script type="text/javascript">
     var StartStop=0; //実験開始・停止を決める変数
-    var totalTickCount = 0; //プレゼンテーション全体の時間を格納する変数
+    var totalTickCount = 0; //プレゼンテーション全体の時間を計測するための変数
     var objectGazeTickCount = {}; //各聴衆を見ている時間を格納する配列
     var gazedObjectID; //見ている聴講者のIDを格納する変数
 
@@ -65,6 +65,10 @@
     時間計測,アイコンタクト率計測,テキスト更新
     ---------------------------------*/
     var eyeContactRate=0;
+    var totalEyeContactRate=0;
+    var totalObjectGazeTickCount=0;
+    var totalTime=0;
+
     var updateText = function() {
       if (StartStop == 1) {
         ++totalTickCount;
@@ -78,6 +82,9 @@
         for (var i in objectGazeTickCount) {
           eyeContactRate = 100*(objectGazeTickCount[i] / totalTickCount);
           text += i + " " + eyeContactRate.toFixed(2) + "\n";
+
+          totalObjectGazeTickCount += objectGazeTickCount[i];
+          totalEyeContactRate = 100*(totalObjectGazeTickCount / totalTickCount);
           /*------------------------------------------------------
           開始30秒後から聴衆の顔オブジェクトのIDを引数としてchangeColorを呼び出す
           ------------------------------------------------------*/
@@ -99,7 +106,10 @@
             }
           }
         }
+        totalTime　= totalTickCount / 2;
         document.getElementById("text1").setAttribute("bmfont-text", "text", text);
+        document.getElementById("text3").setAttribute("bmfont-text", "text", "Total\n" + "T " + totalTime.toFixed(0) + "\n" + "R " + totalEyeContactRate.toFixed(2));
+        totalObjectGazeTickCount=0;
       }
     };
     setInterval(updateText, 500);
@@ -108,17 +118,17 @@
     アイコンタクト率に応じて色変換
     --------------------*/
     var changeColor = function(id) {
-      if (25 < eyeContactRate) {
+      if (7.5 < eyeContactRate) {
         id.setAttribute('color', '#4CC3D9');
       }
-      else if ((15 < eyeContactRate) && (eyeContactRate < 25)){
-        id.setAttribute('color', '#008000');
+      else if ((6 < eyeContactRate) && (eyeContactRate < 7.5)){
+        id.setAttribute('color', '#01DF01');
       }
-      else if ((5 < eyeContactRate) && (eyeContactRate < 15)){
-        id.setAttribute('color', '#FF0000');
+      else if ((5 < eyeContactRate) && (eyeContactRate < 6)){
+        id.setAttribute('color', '#8A0808');
       }
       else if (eyeContactRate < 5){
-        id.setAttribute('color', '');
+        id.setAttribute('color', '#000000');
       }
     }
 
@@ -154,11 +164,11 @@
     <a-entity camera look-controls position="-4 3 0">
       <a-cursor fuse="true" fuse-timeout="500" position="0 0 -1" material="color: blue; shader: flat">
       </a-cursor>
-      <a-entity id="text1" position="-0.6 0.4 -1" bmfont-text="color: black;" scale="0.4 0.4 0.4">
+      <a-entity id="text1" position="-0.5 0.25 -1" bmfont-text="color: black;" scale="0.4 0.4 0.4">
       </a-entity>
-      <a-entity id="text2" position="-0.6 -0.4 -1" bmfont-text="color: blue;" scale="0.4 0.4 0.4">
+      <a-entity id="text2" position="-0.5 -0.4 -1" bmfont-text="color: blue;" scale="0.4 0.4 0.4">
       </a-entity>
-      <a-entity id="text3" position="-0.6 -0.2 -1" bmfont-text="color: blue;" scale="0.4 0.4 0.4">
+      <a-entity id="text3" position="0.2 0.4 -1" bmfont-text="color: red;" scale="0.4 0.4 0.4">
       </a-entity>
     </a-entity>
 
